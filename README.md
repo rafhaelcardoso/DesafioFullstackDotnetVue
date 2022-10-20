@@ -33,11 +33,12 @@ Vamos manter o desafio simples, ou seja, não se apegue a questão de usuário/p
 - Construir a API com dotnet 6.
 - Utilizar o Entity Framework para a camada de persistência;
 - Adotar as melhores práticas do mercado para construção de APIs;
-- Adotar as melhores práticas do mercado para construção do CRUD (pode utilizar algum template)
+- Adotar as melhores práticas do mercado para construção do CRUD (utilizar https://bootstrap-vue.org/)
 
-## Diferenciais:
+## Diferenciais (Plus):
 - Instalar e configurar o swagger;
 - Aplicar o padrão RESTful para o desenvolvimento da API;
+- Criar Notificação Websocket SignalR (Pode fazer MOC apenas pra confirmar que funciona)
 
 ## O que será avaliado:
 - **Organização do código**: Como você organiza os arquivos que compõem a solução;
