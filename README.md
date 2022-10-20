@@ -16,7 +16,7 @@ Você será o responsável por criar essa Web API (dotnet 6) e fazer um CRUD (Vu
 
 - Crie um projeto WebAPI; 
 
-- Crie uma base de dados com a tabela Produtos utilizando Entity Framework;
+- Crie uma base de dados com a tabela Produtos (Para persistência, utilize Entity Framework);
 
 - Faça um CRUD de Produtos. Será necessário gerar 5 endpoints para atender à esta finalidade:
   - Listar todos os Produtos com paginação
