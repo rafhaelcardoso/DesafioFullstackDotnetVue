@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using ProdutosApi.Backend.Data;
 using ProdutosApi.Backend.Models;
 using ProdutosApi.Backend.Models.ViewModel;
+using System.Text.RegularExpressions;
 
 namespace ProdutosApi.Backend.Controllers;
 
@@ -46,6 +47,11 @@ public class ProdutoController : ControllerBase
     [Route("api/produtos")]
     public async Task<IActionResult> PostProdutoAsync([FromBody] AddProdutoViewModel produtoModel)
     {
+        var fileName = $"{Guid.NewGuid().ToString()}.jpg";
+        var data = new Regex(@"^data:image\/[a-z]+;base64,").Replace(produtoModel.Imagem, "");
+        var bytes = Convert.FromBase64String(data);
+
+        await System.IO.File.WriteAllBytesAsync($"wwwroot/Images/{fileName}", bytes);
 
         var produto = new Produto
         {
@@ -53,7 +59,7 @@ public class ProdutoController : ControllerBase
             Titulo = produtoModel.Titulo,
             Descricao = produtoModel.Descricao,
             Valor = produtoModel.Valor,
-            Imagem = produtoModel.Imagem,
+            Imagem = $"https://localhost:7181/Images/{fileName}",
             DataCriacao = DateTime.Now,
             DataEdicao = DateTime.Now
         };
@@ -73,10 +79,19 @@ public class ProdutoController : ControllerBase
         if (produto is null)
             return NotFound(new Result<Produto>($"Não foi encontrado um produto com o id = {id}."));
 
+        if (produto is null)
+            return NotFound(new Result<Produto>($"Não foi encontrado um produto com o id = {id}."));
+
+        var fileName = $"{Guid.NewGuid().ToString()}.jpg";
+        var data = new Regex(@"^data:image\/[a-z]+;base64,").Replace(produtoModel.Imagem, "");
+        var bytes = Convert.FromBase64String(data);
+
+        await System.IO.File.WriteAllBytesAsync($"wwwroot/Images/{fileName}", bytes);
+
         produto.Titulo = produtoModel.Titulo;
         produto.Descricao = produtoModel.Descricao;
         produto.Valor = produtoModel.Valor;
-        produto.Imagem = produtoModel.Imagem;
+        produto.Imagem = $"https://localhost:7181/Images/{fileName}";
         produto.DataEdicao = DateTime.Now;
 
         _context.Produtos.Update(produto);

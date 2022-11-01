@@ -60,3 +60,4 @@ C:\Users\Cardoso\Documents\GitHub\DesafioFullstackDotnetVue\ProdutosApi.Backend\
 C:\Users\Cardoso\Documents\GitHub\DesafioFullstackDotnetVue\ProdutosApi.Backend\obj\Debug\net6.0\ProdutosApi.Backend.pdb
 C:\Users\Cardoso\Documents\GitHub\DesafioFullstackDotnetVue\ProdutosApi.Backend\obj\Debug\net6.0\ProdutosApi.Backend.genruntimeconfig.cache
 C:\Users\Cardoso\Documents\GitHub\DesafioFullstackDotnetVue\ProdutosApi.Backend\obj\Debug\net6.0\ref\ProdutosApi.Backend.dll
+C:\Users\Cardoso\Documents\GitHub\DesafioFullstackDotnetVue\ProdutosApi.Backend\bin\Debug\net6.0\ProdutosApi.Backend.staticwebassets.runtime.json

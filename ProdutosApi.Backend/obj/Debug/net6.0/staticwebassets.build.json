@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "XanE2feIKmvlw/Vl8WuBEmvuusWdzxzfavjOUDuOgsE=",
+  "Hash": "VKBWVa6GHQtu4w+dki12aCfBg0bRH6B7xqev6DY4GVA=",
   "Source": "ProdutosApi.Backend",
   "BasePath": "_content/ProdutosApi.Backend",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "ProdutosApi.Backend\\wwwroot",
+      "Source": "ProdutosApi.Backend",
+      "ContentRoot": "C:\\Users\\Cardoso\\Documents\\GitHub\\DesafioFullstackDotnetVue\\ProdutosApi.Backend\\wwwroot\\",
+      "BasePath": "_content/ProdutosApi.Backend",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }
