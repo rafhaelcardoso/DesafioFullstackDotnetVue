@@ -29,4 +29,74 @@ public class ProdutoController : ControllerBase
         var produtos = await _context.Produtos.AsNoTracking().ToListAsync();
         return Ok(new Result<List<Produto>>(produtos));
     }
+
+    [HttpGet]
+    [Route("api/produtos/{id:int}")]
+    public async Task<IActionResult> GetProdutosPorIdAsync([FromRoute] int id)
+    {
+        var produto = await _context.Produtos.AsNoTracking().FirstOrDefaultAsync(p => p.Id == id);
+
+        if (produto is null)
+            return NotFound(new Result<Produto>($"Não foi encontrado um produto com o id = {id}."));
+
+        return Ok(new Result<Produto>(produto));
+    }
+
+    [HttpPost]
+    [Route("api/produtos")]
+    public async Task<IActionResult> PostProdutoAsync([FromBody] AddProdutoViewModel produtoModel)
+    {
+
+        var produto = new Produto
+        {
+            Id = 0,
+            Titulo = produtoModel.Titulo,
+            Descricao = produtoModel.Descricao,
+            Valor = produtoModel.Valor,
+            Imagem = produtoModel.Imagem,
+            DataCriacao = DateTime.Now,
+            DataEdicao = DateTime.Now
+        };
+
+        await _context.Produtos.AddAsync(produto);
+        await _context.SaveChangesAsync();
+
+        return Created($"api/produtos/{produto.Id}", new Result<Produto>(produto));
+    }
+
+    [HttpPut]
+    [Route("api/produtos/{id:int}")]
+    public async Task<IActionResult> PutProdutoAsync([FromRoute] int id, [FromBody] EditProdutoViewModel produtoModel)
+    {
+        var produto = await _context.Produtos.AsNoTracking().FirstOrDefaultAsync(p => p.Id == id);
+
+        if (produto is null)
+            return NotFound(new Result<Produto>($"Não foi encontrado um produto com o id = {id}."));
+
+        produto.Titulo = produtoModel.Titulo;
+        produto.Descricao = produtoModel.Descricao;
+        produto.Valor = produtoModel.Valor;
+        produto.Imagem = produtoModel.Imagem;
+        produto.DataEdicao = DateTime.Now;
+
+        _context.Produtos.Update(produto);
+        await _context.SaveChangesAsync();
+        return Ok(new Result<Produto>(produto));
+    }
+
+    [HttpDelete]
+    [Route("api/produtos/{id:int}")]
+    public async Task<IActionResult> DeleteProdutoAsync([FromRoute] int id)
+    {
+        var produto = await _context.Produtos.AsNoTracking().FirstOrDefaultAsync(p => p.Id == id);
+
+        if (produto is null)
+            return NotFound(new Result<Produto>($"Não foi encontrado um produto com o id = {id}."));
+
+        _context.Produtos.Remove(produto);
+        await _context.SaveChangesAsync();
+
+        return Ok(new Result<Produto>(produto));
+    }
+
 }
